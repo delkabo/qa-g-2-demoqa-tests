@@ -37,8 +37,9 @@ public class RegistrationFormTests {
         $("#state").scrollTo().click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
-        $("#stateCity-wrapper").$(byText("Delhi")).click();
-        $("#submit").click();
+        $("#stateCity-wrapper #city").$(byText("Delhi")).click();
+        Selenide.executeJavaScript("document.body.style.zoom='67%'");
+        Selenide.executeJavaScript("arguments[0].click()", $("#submit"));
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").$(byText("Student Name"))
